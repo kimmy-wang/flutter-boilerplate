@@ -2,6 +2,8 @@ import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boilerplate/bootstrap.dart';
 import 'package:flutter_boilerplate/common/dio/other_http.dart';
+import 'package:flutter_boilerplate/common/http/clients.dart';
+import 'package:http_trending_api/http_trending_api.dart';
 import 'package:local_storage_trending_repository_middleware/local_storage_trending_repository_middleware.dart';
 
 Future<void> main() async {

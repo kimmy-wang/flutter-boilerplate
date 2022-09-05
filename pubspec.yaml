@@ -50,6 +50,8 @@ dependencies:
     path: packages/trending_api
   dio_trending_api:
     path: packages/dio_trending_api
+  http_trending_api:
+    path: packages/http_trending_api
   trending_repository_middleware:
     path: packages/trending_repository_middleware
   local_storage_trending_repository_middleware:

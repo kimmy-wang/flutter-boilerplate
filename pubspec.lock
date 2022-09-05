@@ -364,6 +364,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.5"
   http_multi_server:
     dependency: transitive
     description:
@@ -378,6 +385,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  http_trending_api:
+    dependency: "direct main"
+    description:
+      path: "packages/http_trending_api"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   intersperse:
     dependency: transitive
     description:
