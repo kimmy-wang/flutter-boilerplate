@@ -36,7 +36,7 @@ void main() {
       await tester.pumpWidget(
         RepositoryProvider.value(
           value: trendingRepository,
-          child: const AppView(),
+          child: AppView(),
         ),
       );
 
@@ -51,7 +51,7 @@ void main() {
       await tester.pumpWidget(
         RepositoryProvider.value(
           value: trendingRepository,
-          child: const AppView(),
+          child: AppView(),
         ),
       );
 

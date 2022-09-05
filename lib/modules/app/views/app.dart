@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_boilerplate/common/http/widget/http_error_boundary.dart';
 import 'package:flutter_boilerplate/l10n/l10n.dart';
 import 'package:flutter_boilerplate/modules/app/cubit/app_cubit.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
@@ -20,15 +21,15 @@ class App extends StatelessWidget {
       value: trendingRepository,
       child: BlocProvider(
         create: (_) => AppCubit(),
-        child: const AppView(),
+        child: AppView(),
       ),
     );
   }
 }
 
 class AppView extends StatelessWidget {
-  const AppView({super.key});
-
+  AppView({super.key});
+  final httpErrorBoundary = HttpErrorBoundary.init();
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
@@ -40,6 +41,10 @@ class AppView extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         home: const HomePage(),
+        builder: (BuildContext context, Widget? child) {
+          final newChild = httpErrorBoundary(context, child);
+          return newChild;
+        },
       ),
     );
   }
