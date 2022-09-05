@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_boilerplate/common/http/code.dart';
-import 'package:flutter_boilerplate/common/http/event/http_error_event.dart';
+import 'package:flutter_boilerplate/common/dio/code.dart';
+import 'package:flutter_boilerplate/common/dio/event/http_error_event.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class HttpErrorBoundary {

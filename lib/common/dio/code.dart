@@ -1,6 +1,6 @@
 
-import 'package:flutter_boilerplate/common/http/event/http_error_event.dart';
-import 'package:flutter_boilerplate/common/http/widget/http_error_boundary.dart';
+import 'package:flutter_boilerplate/common/dio/event/http_error_event.dart';
+import 'package:flutter_boilerplate/common/dio/widget/http_error_boundary.dart';
 
 class Code {
   ///网络错误

@@ -1,7 +1,7 @@
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio_trending_api/dio_trending_api.dart';
-import 'package:flutter_boilerplate/common/http/code.dart';
+import 'package:flutter_boilerplate/common/dio/code.dart';
 import 'package:flutter_boilerplate/common/models/response.dart' hide Response;
 
 class ErrorInterceptor extends InterceptorsWrapper {

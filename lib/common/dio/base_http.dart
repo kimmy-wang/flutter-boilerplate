@@ -4,8 +4,8 @@ import 'package:dio/native_imp.dart';
 import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_boilerplate/common/constants/constants.dart';
-import 'package:flutter_boilerplate/common/http/interceptors/base_interceptor.dart';
-import 'package:flutter_boilerplate/common/http/interceptors/error_interceptor.dart';
+import 'package:flutter_boilerplate/common/dio/interceptors/base_interceptor.dart';
+import 'package:flutter_boilerplate/common/dio/interceptors/error_interceptor.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 // 必须是顶层函数

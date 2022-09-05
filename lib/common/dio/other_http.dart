@@ -1,5 +1,5 @@
 import 'package:flutter_boilerplate/common/constants/constants.dart';
-import 'package:flutter_boilerplate/common/http/base_http.dart';
+import 'package:flutter_boilerplate/common/dio/base_http.dart';
 
 final OtherHttp trendingHttp = OtherHttp(Constants.githubTrendingApiPrefix);
 final OtherHttp contributionsHttp = OtherHttp(Constants.githubOtherApiPrefix);
