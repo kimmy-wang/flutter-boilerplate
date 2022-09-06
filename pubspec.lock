@@ -449,12 +449,12 @@ packages:
     source: hosted
     version: "1.0.2"
   macos_ui:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: macos_ui
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.7.4"
+    version: "1.7.5"
   matcher:
     dependency: transitive
     description:
