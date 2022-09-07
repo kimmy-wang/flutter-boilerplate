@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/common/dio/widget/http_error_boundary.dart';
@@ -32,10 +33,12 @@ class App extends StatelessWidget {
 
 class AppView extends StatelessWidget {
   AppView({super.key});
+
   final httpErrorBoundary = HttpErrorBoundary.init();
+
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS ? MacosAppView() : MaterialAppView();
+    return !kIsWeb && Platform.isMacOS ? MacosAppView() : MaterialAppView();
   }
 }
 
@@ -88,5 +91,3 @@ class MacosAppView extends StatelessWidget {
     );
   }
 }
-
-

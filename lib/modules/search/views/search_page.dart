@@ -1,7 +1,7 @@
-
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:macos_ui/macos_ui.dart';
 
@@ -19,11 +19,11 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS
+    return !kIsWeb && Platform.isMacOS
         ? _macosScaffold(context)
         : Scaffold(
-      body: _body,
-    );
+            body: _body,
+          );
   }
 
   Widget _macosScaffold(BuildContext context) {

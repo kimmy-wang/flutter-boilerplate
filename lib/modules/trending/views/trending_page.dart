@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
@@ -45,7 +46,7 @@ class _TrendingViewState extends State<TrendingView> {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS
+    return !kIsWeb && Platform.isMacOS
         ? _macosScaffold
         : Scaffold(
             body: _body,

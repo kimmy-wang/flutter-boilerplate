@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/common/utils/navigator_util.dart';
@@ -36,13 +37,15 @@ class _LanguagesViewState extends State<LanguagesView> {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS ? _macosScaffold : Scaffold(
-      appBar: AppBar(
-        title: const Text('LANGUAGES'),
-        centerTitle: true,
-      ),
-      body: _body,
-    );
+    return !kIsWeb && Platform.isMacOS
+        ? _macosScaffold
+        : Scaffold(
+            appBar: AppBar(
+              title: const Text('LANGUAGES'),
+              centerTitle: true,
+            ),
+            body: _body,
+          );
   }
 
   Widget get _macosScaffold {
@@ -94,8 +97,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                   _languageCode = value;
                 });
                 if (value != null) {
-                  BlocProvider.of<AppCubit>(context)
-                      .setLocale(Locale(value));
+                  BlocProvider.of<AppCubit>(context).setLocale(Locale(value));
                 }
               },
             ),
@@ -110,8 +112,7 @@ class _LanguagesViewState extends State<LanguagesView> {
                   _languageCode = value;
                 });
                 if (value != null) {
-                  BlocProvider.of<AppCubit>(context)
-                      .setLocale(Locale(value));
+                  BlocProvider.of<AppCubit>(context).setLocale(Locale(value));
                 }
               },
             ),

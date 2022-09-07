@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
@@ -21,8 +22,9 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => HomeCubit(),
-      child:
-          Platform.isMacOS ? const MacosHomeView() : const MaterialHomeView(),
+      child: !kIsWeb && Platform.isMacOS
+          ? const MacosHomeView()
+          : const MaterialHomeView(),
     );
   }
 }
@@ -148,21 +150,15 @@ class _MacosHomeViewState extends State<MacosHomeView> {
               onResultSelected: (result) {
                 switch (result.searchKey) {
                   case 'Trending':
-                    context
-                        .read<HomeCubit>()
-                        .setTab(0, false);
+                    context.read<HomeCubit>().setTab(0, false);
                     setState(searchFieldController.clear);
                     break;
                   case 'Search':
-                    context
-                        .read<HomeCubit>()
-                        .setTab(1, false);
+                    context.read<HomeCubit>().setTab(1, false);
                     setState(searchFieldController.clear);
                     break;
                   case 'Mine':
-                    context
-                        .read<HomeCubit>()
-                        .setTab(2, false);
+                    context.read<HomeCubit>().setTab(2, false);
                     setState(searchFieldController.clear);
                     break;
                   default:

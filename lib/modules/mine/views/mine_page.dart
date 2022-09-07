@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/common/utils/navigator_util.dart';
@@ -24,11 +25,11 @@ class MineView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS
+    return !kIsWeb && Platform.isMacOS
         ? _macosScaffold(context)
         : Scaffold(
-      body: _body,
-    );
+            body: _body,
+          );
   }
 
   Widget _macosScaffold(BuildContext context) {
@@ -82,8 +83,8 @@ class MineView extends StatelessWidget {
                   state.themeMode == ThemeMode.system
                       ? '跟随系统'
                       : state.themeMode == ThemeMode.dark
-                      ? '黑暗模式'
-                      : '白天模式',
+                          ? '黑暗模式'
+                          : '白天模式',
                 ),
               ),
             ],

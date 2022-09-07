@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/common/utils/navigator_util.dart';
@@ -37,13 +38,15 @@ class _ThemeModeViewState extends State<ThemeModeView> {
 
   @override
   Widget build(BuildContext context) {
-    return Platform.isMacOS ? _macosScaffold : Scaffold(
-      appBar: AppBar(
-        title: const Text('Dark Appearance'),
-        centerTitle: true,
-      ),
-      body: _body,
-    );
+    return !kIsWeb && Platform.isMacOS
+        ? _macosScaffold
+        : Scaffold(
+            appBar: AppBar(
+              title: const Text('Dark Appearance'),
+              centerTitle: true,
+            ),
+            body: _body,
+          );
   }
 
   Widget get _macosScaffold {
@@ -89,8 +92,8 @@ class _ThemeModeViewState extends State<ThemeModeView> {
           tiles: [
             SettingsTile.switchTile(
               onToggle: (value) {
-                final isDark = Theme.of(context).colorScheme.brightness ==
-                    Brightness.dark;
+                final isDark =
+                    Theme.of(context).colorScheme.brightness == Brightness.dark;
                 final currentMode = isDark ? ThemeMode.dark : ThemeMode.light;
                 setState(() {
                   _auto = value;
@@ -100,8 +103,7 @@ class _ThemeModeViewState extends State<ThemeModeView> {
                   BlocProvider.of<AppCubit>(context)
                       .setThemeMode(ThemeMode.system);
                 } else {
-                  BlocProvider.of<AppCubit>(context)
-                      .setThemeMode(currentMode);
+                  BlocProvider.of<AppCubit>(context).setThemeMode(currentMode);
                 }
               },
               initialValue: _auto,
