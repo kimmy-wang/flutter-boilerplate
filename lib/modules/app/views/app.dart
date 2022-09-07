@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,20 +26,21 @@ class App extends StatelessWidget {
       value: trendingRepository,
       child: BlocProvider(
         create: (_) => AppCubit(),
-        child: AppView(),
+        child: const AppView(),
       ),
     );
   }
 }
 
 class AppView extends StatelessWidget {
-  AppView({super.key});
-
-  final httpErrorBoundary = HttpErrorBoundary.init();
+  const AppView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return !kIsWeb && Platform.isMacOS ? MacosAppView() : MaterialAppView();
+    if (kIsWeb) return MaterialAppView();
+    if (Platform.isMacOS) return MacosAppView();
+    if (Platform.isWindows) return WindowsAppView();
+    return MaterialAppView();
   }
 }
 
@@ -78,6 +80,29 @@ class MacosAppView extends StatelessWidget {
       builder: (BuildContext context, AppState state) => MacosApp(
         theme: MacosThemeData.light(),
         darkTheme: MacosThemeData.dark(),
+        themeMode: state.themeMode,
+        locale: state.locale,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: const HomePage(),
+        builder: (BuildContext context, Widget? child) {
+          final newChild = httpErrorBoundary(context, child);
+          return newChild;
+        },
+      ),
+    );
+  }
+}
+
+class WindowsAppView extends StatelessWidget {
+  WindowsAppView({super.key});
+
+  final httpErrorBoundary = HttpErrorBoundary.init();
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AppCubit, AppState>(
+      builder: (BuildContext context, AppState state) => FluentApp(
         themeMode: state.themeMode,
         locale: state.locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
