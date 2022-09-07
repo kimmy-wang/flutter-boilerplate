@@ -1,7 +1,8 @@
+import 'dart:io';
+
 import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_acrylic/flutter_acrylic.dart' as flutter_acrylic;
 import 'package:flutter_boilerplate/bootstrap.dart';
 import 'package:flutter_boilerplate/common/dio/other_http.dart';
 import 'package:flutter_boilerplate/common/http/clients.dart';
@@ -27,20 +28,19 @@ Future<void> main() async {
     plugin: await SharedPreferences.getInstance(),
   );
 
-  if (isDesktop) {
-    await flutter_acrylic.Window.initialize();
+  if (!kIsWeb && Platform.isWindows) {
     await WindowManager.instance.ensureInitialized();
     await windowManager.waitUntilReadyToShow().then((_) async {
       await windowManager.setTitleBarStyle(
         TitleBarStyle.hidden,
         windowButtonVisibility: false,
       );
-      await windowManager.setSize(const Size(755, 545));
-      await windowManager.setMinimumSize(const Size(755, 545));
-      await windowManager.center();
-      await windowManager.show();
-      await windowManager.setPreventClose(true);
-      await windowManager.setSkipTaskbar(false);
+      // await windowManager.setSize(const Size(755, 545));
+      // await windowManager.setMinimumSize(const Size(755, 545));
+      // await windowManager.center();
+      // await windowManager.show();
+      // await windowManager.setPreventClose(true);
+      // await windowManager.setSkipTaskbar(false);
     });
   }
 
