@@ -142,63 +142,37 @@ class _MacosHomeViewState extends State<MacosHomeView> {
           //   title: Text(modules[state.tabIndex].label),
           // ),
           sidebar: Sidebar(
-            // top: MacosSearchField(
-            //   placeholder: 'Search',
-            //   controller: searchFieldController,
-            //   onResultSelected: (result) {
-            //     switch (result.searchKey) {
-            //       case 'Buttons':
-            //         setState(() {
-            //           pageIndex = 0;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Indicators':
-            //         setState(() {
-            //           pageIndex = 1;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Fields':
-            //         setState(() {
-            //           pageIndex = 2;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Colors':
-            //         setState(() {
-            //           pageIndex = 3;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Dialogs and Sheets':
-            //         setState(() {
-            //           pageIndex = 5;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Toolbar':
-            //         setState(() {
-            //           pageIndex = 6;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       case 'Selectors':
-            //         setState(() {
-            //           pageIndex = 7;
-            //           searchFieldController.clear();
-            //         });
-            //         break;
-            //       default:
-            //         searchFieldController.clear();
-            //     }
-            //   },
-            //   results: const [
-            //     SearchResultItem('Buttons'),
-            //     SearchResultItem('Indicators'),
-            //     SearchResultItem('Fields'),
-            //   ],
-            // ),
+            top: MacosSearchField(
+              placeholder: 'Search',
+              controller: searchFieldController,
+              onResultSelected: (result) {
+                switch (result.searchKey) {
+                  case 'Trending':
+                    context
+                        .read<HomeCubit>()
+                        .setTab(0, false);
+                    setState(searchFieldController.clear);
+                    break;
+                  case 'Search':
+                    context
+                        .read<HomeCubit>()
+                        .setTab(1, false);
+                    setState(searchFieldController.clear);
+                    break;
+                  case 'Mine':
+                    context
+                        .read<HomeCubit>()
+                        .setTab(2, false);
+                    setState(searchFieldController.clear);
+                    break;
+                  default:
+                    searchFieldController.clear();
+                }
+              },
+              results: modules
+                  .map((module) => SearchResultItem(module.label))
+                  .toList(),
+            ),
             minWidth: 200,
             builder: (context, controller) {
               return SidebarItems(
