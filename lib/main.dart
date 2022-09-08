@@ -23,7 +23,7 @@ bool get isDesktop {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final trendingApi = DioTrendingApi(dio: trendingHttp);
+  final trendingApi = HttpTrendingApi(client: client);
   final trendingRepositoryMiddleware = LocalStorageTrendingRepositoryMiddleware(
     plugin: await SharedPreferences.getInstance(),
   );

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'dart:convert' as convert;
+import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:trending_api/trending_api.dart';
@@ -21,15 +21,15 @@ class HttpTrendingApi extends TrendingApi {
     required int pageSize,
   }) async {
     try {
-      final res = await _client.get(Uri.parse('https://api.github.com/'));
+      final res = await _client.get(Uri.parse('https://api.gitterapp.com/'));
       if (res.statusCode == 200) {
         return List<Trending>.from(
-            (convert.jsonDecode(res.body) as Iterable).map(
+            (jsonDecode(utf8.decode(res.bodyBytes)) as Iterable).map(
           (x) => Trending.fromJson(x as Map<String, dynamic>),
         ));
       }
       return [];
-    } on Exception catch (error, stack) {
+    } catch (error, stack) {
       throw TrendingRequestedException();
     }
   }
