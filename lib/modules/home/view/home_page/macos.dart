@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
@@ -133,22 +132,25 @@ class _MacosHomeViewState extends State<MacosHomeView> with WindowListener {
         context: context,
         builder: (_) {
           return MacosAlertDialog(
-            message: Text('Are you sure you want to close this window?'),
+            message: const Text('Are you sure you want to close this window?'),
             primaryButton: PushButton(
-              child: Text('No'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
               buttonSize: ButtonSize.large,
+              child: const Text('No'),
             ),
             secondaryButton: PushButton(
-              child: Text('Yes'),
               onPressed: () async {
                 Navigator.of(context).pop();
                 await windowManager.destroy();
               },
               buttonSize: ButtonSize.large,
-            ), title: Text('Tips'), appIcon: MacosIcon(CupertinoIcons.info),
+              isSecondary: true,
+              child: const Text('Yes'),
+            ),
+            title: const Text('Confirm close'),
+            appIcon: const MacosIcon(CupertinoIcons.info),
           );
         },
       );
