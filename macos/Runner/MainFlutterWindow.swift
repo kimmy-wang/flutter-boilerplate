@@ -1,5 +1,6 @@
 import Cocoa
 import FlutterMacOS
+import window_manager
 
 class BlurryContainerViewController: NSViewController {
   let flutterViewController = FlutterViewController()
@@ -65,16 +66,21 @@ class MainFlutterWindow: NSWindow, NSWindowDelegate {
     super.awakeFromNib()
   }
 
+  override public func order(_ place: NSWindow.OrderingMode, relativeTo otherWin: Int) {
+    super.order(place, relativeTo: otherWin)
+    hiddenWindowAtLaunch()
+  }
+
   // Hides the toolbar when in fullscreen mode
   func window(_ window: NSWindow, willUseFullScreenPresentationOptions proposedOptions: NSApplication.PresentationOptions = []) -> NSApplication.PresentationOptions {
-    
+
     return [.autoHideToolbar, .autoHideMenuBar, .fullScreen]
   }
 
   func windowWillEnterFullScreen(_ notification: Notification) {
       self.toolbar?.isVisible = false
   }
-  
+
   func windowDidExitFullScreen(_ notification: Notification) {
       self.toolbar?.isVisible = true
   }

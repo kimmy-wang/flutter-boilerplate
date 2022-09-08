@@ -28,19 +28,22 @@ Future<void> main() async {
     plugin: await SharedPreferences.getInstance(),
   );
 
-  if (!kIsWeb && Platform.isWindows) {
+  if (isDesktop) {
     await WindowManager.instance.ensureInitialized();
     await windowManager.waitUntilReadyToShow().then((_) async {
-      await windowManager.setTitleBarStyle(
-        TitleBarStyle.hidden,
-        windowButtonVisibility: false,
-      );
+      if (!Platform.isMacOS) {
+        await windowManager.setTitleBarStyle(
+          TitleBarStyle.hidden,
+          windowButtonVisibility: false,
+        );
+      }
+
       // await windowManager.setSize(const Size(755, 545));
       // await windowManager.setMinimumSize(const Size(755, 545));
-      // await windowManager.center();
-      // await windowManager.show();
-      // await windowManager.setPreventClose(true);
-      // await windowManager.setSkipTaskbar(false);
+      await windowManager.center();
+      await windowManager.show();
+      await windowManager.setPreventClose(true);
+      await windowManager.setSkipTaskbar(false);
     });
   }
 
