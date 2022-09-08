@@ -51,19 +51,19 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
             openMinWidth: 250,
             openMaxWidth: 320,
           ),
-          // items: modules
-          //     .map(
-          //       (module) => PaneItem(
-          //         icon: Icon(module.icon),
-          //         title: Text(module.label),
-          //       ),
-          //     )
-          //     .toList(),
-          items: [
-            PaneItem(icon: Icon(FluentIcons.up), title: Text('Trending')),
-            PaneItem(icon: Icon(FluentIcons.search), title: Text('Search')),
-            PaneItem(icon: Icon(FluentIcons.settings), title: Text('Mine'))
-          ],
+          items: modules
+              .map(
+                (module) => PaneItem(
+                  icon: Icon(module.icon),
+                  title: Text(module.label),
+                ),
+              )
+              .toList().cast<NavigationPaneItem>(),
+          // items: [
+          //   PaneItem(icon: Icon(FluentIcons.up), title: Text('Trending')),
+          //   PaneItem(icon: Icon(FluentIcons.search), title: Text('Search')),
+          //   PaneItem(icon: Icon(FluentIcons.settings), title: Text('Mine'))
+          // ],
           autoSuggestBox: AutoSuggestBox(
             controller: TextEditingController(),
             items: const ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
