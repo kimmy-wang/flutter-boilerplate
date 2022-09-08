@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:easy_refresh/easy_refresh.dart';
+import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -46,11 +47,23 @@ class _TrendingViewState extends State<TrendingView> {
 
   @override
   Widget build(BuildContext context) {
-    return !kIsWeb && Platform.isMacOS
-        ? _macosScaffold
-        : Scaffold(
-            body: _body,
-          );
+    if (kIsWeb) return _materialScaffold;
+    if (Platform.isMacOS) return _macosScaffold;
+    if (Platform.isWindows) return _windowsScaffold;
+    return _materialScaffold;
+  }
+
+  Widget get _materialScaffold {
+    return Scaffold(
+      body: _body,
+    );
+  }
+
+  Widget get _windowsScaffold {
+    return ScaffoldPage(
+      padding: EdgeInsets.zero,
+      content: _body,
+    );
   }
 
   Widget get _macosScaffold {
