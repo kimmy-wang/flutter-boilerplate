@@ -25,11 +25,20 @@ class MineView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return !kIsWeb && Platform.isMacOS
-        ? _macosScaffold(context)
-        : Scaffold(
-            body: _body,
-          );
+    if (kIsWeb) return _materialScaffold;
+    if (Platform.isIOS) return _iosScaffold;
+    if (Platform.isMacOS) return _macosScaffold(context);
+    return _materialScaffold;
+  }
+
+  Widget get _materialScaffold {
+    return Scaffold(
+      body: _body,
+    );
+  }
+
+  Widget get _iosScaffold {
+    return _body;
   }
 
   Widget _macosScaffold(BuildContext context) {

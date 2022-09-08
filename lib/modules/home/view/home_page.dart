@@ -28,6 +28,7 @@ class HomePage extends StatelessWidget {
 
   Widget get _child {
     if (kIsWeb) return const MaterialHomeView();
+    if (Platform.isIOS) return const IOSHomeView();
     if (Platform.isMacOS) return const MacosHomeView();
     if (Platform.isWindows) return const WindowsHomeView();
     return const MaterialHomeView();

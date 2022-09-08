@@ -48,6 +48,7 @@ class _TrendingViewState extends State<TrendingView> {
   @override
   Widget build(BuildContext context) {
     if (kIsWeb) return _materialScaffold;
+    if (Platform.isIOS) return _iosScaffold;
     if (Platform.isMacOS) return _macosScaffold;
     if (Platform.isWindows) return _windowsScaffold;
     return _materialScaffold;
@@ -57,6 +58,10 @@ class _TrendingViewState extends State<TrendingView> {
     return Scaffold(
       body: _body,
     );
+  }
+
+  Widget get _iosScaffold {
+    return _body;
   }
 
   Widget get _windowsScaffold {
