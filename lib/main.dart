@@ -31,7 +31,7 @@ Future<void> main() async {
   if (isDesktop) {
     await WindowManager.instance.ensureInitialized();
     await windowManager.waitUntilReadyToShow().then((_) async {
-      if (!Platform.isMacOS) {
+      if (Platform.isWindows) {
         await windowManager.setTitleBarStyle(
           TitleBarStyle.hidden,
           windowButtonVisibility: false,

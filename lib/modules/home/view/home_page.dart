@@ -31,6 +31,7 @@ class HomePage extends StatelessWidget {
     if (Platform.isIOS) return const IOSHomeView();
     if (Platform.isMacOS) return const MacosHomeView();
     if (Platform.isWindows) return const WindowsHomeView();
+    if (Platform.isLinux) return const LinuxHomeView();
     return const MaterialHomeView();
   }
 }
