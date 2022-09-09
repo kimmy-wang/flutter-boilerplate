@@ -10,13 +10,14 @@ class DrawerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).colorScheme.secondary;
     return Drawer(
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) => Column(
           children: [
             Container(
-              height: 100,
-              color: Colors.red,
+              height: kToolbarHeight,
+              color: primaryColor,
             ),
             ...menus(context, state.tabIndex),
           ],
@@ -32,7 +33,6 @@ class DrawerPage extends StatelessWidget {
         leading: Icon(module.icon),
         title: Text(module.label),
         onTap: () {
-          NavigatorUtil.pop(context);
           context.read<HomeCubit>().setTab(index, currentIndex == index);
         },
       ));
