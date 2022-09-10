@@ -1,4 +1,3 @@
-
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
@@ -13,6 +12,8 @@ class WindowsHomeView extends StatefulWidget {
 }
 
 class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
+  final searchFieldController = TextEditingController();
+
   @override
   void initState() {
     windowManager.addListener(this);
@@ -22,6 +23,7 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
   @override
   void dispose() {
     windowManager.removeListener(this);
+    searchFieldController.dispose();
     super.dispose();
   }
 
@@ -43,6 +45,12 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           ),
         ),
         pane: NavigationPane(
+          menuButton: Center(
+            child: IconButton(
+              onPressed: () {  },
+              icon: const Icon(FluentIcons.collapse_menu),
+            ),
+          ),
           selected: state.tabIndex,
           onChanged: (index) {
             context.read<HomeCubit>().setTab(index, state.tabIndex == index);
@@ -54,19 +62,38 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           items: modules
               .map(
                 (module) => PaneItem(
-                  icon: Icon(module.icon),
-                  title: Text(module.label),
-                ),
-              )
-              .toList().cast<NavigationPaneItem>(),
+              icon: Icon(module.icon),
+              title: Text(module.label),
+            ),
+          )
+              .toList()
+              .cast<NavigationPaneItem>(),
           // items: [
           //   PaneItem(icon: Icon(FluentIcons.up), title: Text('Trending')),
           //   PaneItem(icon: Icon(FluentIcons.search), title: Text('Search')),
           //   PaneItem(icon: Icon(FluentIcons.settings), title: Text('Mine'))
           // ],
           autoSuggestBox: AutoSuggestBox(
-            controller: TextEditingController(),
-            items: const ['Item 1', 'Item 2', 'Item 3', 'Item 4'],
+            controller: searchFieldController,
+            items: modules.map((module) => module.label).toList(),
+            onSelected: (value) {
+              switch (value) {
+                case 'Trending':
+                  context.read<HomeCubit>().setTab(0, false);
+                  setState(searchFieldController.clear);
+                  break;
+                case 'Search':
+                  context.read<HomeCubit>().setTab(1, false);
+                  setState(searchFieldController.clear);
+                  break;
+                case 'Mine':
+                  context.read<HomeCubit>().setTab(2, false);
+                  setState(searchFieldController.clear);
+                  break;
+                default:
+                  searchFieldController.clear();
+              }
+            },
           ),
           autoSuggestBoxReplacement: const Icon(FluentIcons.search),
         ),

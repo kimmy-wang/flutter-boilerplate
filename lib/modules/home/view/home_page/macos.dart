@@ -13,7 +13,7 @@ class MacosHomeView extends StatefulWidget {
 }
 
 class _MacosHomeViewState extends State<MacosHomeView> with WindowListener {
-  late final searchFieldController = TextEditingController();
+  final searchFieldController = TextEditingController();
 
   @override
   void initState() {
@@ -24,6 +24,7 @@ class _MacosHomeViewState extends State<MacosHomeView> with WindowListener {
   @override
   void dispose() {
     windowManager.removeListener(this);
+    searchFieldController.dispose();
     super.dispose();
   }
 
