@@ -4,9 +4,7 @@ import 'package:flutter_boilerplate/modules/home/home.dart';
 
 /// web
 class WebHomeView extends StatefulWidget {
-  const WebHomeView({super.key, required this.modules});
-
-  final List<Module> modules;
+  const WebHomeView({super.key});
 
   @override
   State<WebHomeView> createState() => _WebHomeViewState();
@@ -71,7 +69,7 @@ class _WebHomeViewState extends State<WebHomeView> with SingleTickerProviderStat
     final primaryColor = Theme.of(context).colorScheme.secondary;
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) => Scaffold(
-        // drawer: DrawerPage(modules: widget.modules),
+        // drawer: DrawerPage(),
         // appBar: AppBar(
         //   title: Text(modules[state.tabIndex].label),
         //   centerTitle: true,
@@ -104,7 +102,7 @@ class _WebHomeViewState extends State<WebHomeView> with SingleTickerProviderStat
 
   List<Widget> menus(int currentIndex) {
     final _menus = <Widget>[];
-    widget.modules.asMap().forEach((index, module) {
+    modules.asMap().forEach((index, module) {
       _menus.add(Transform(
         transform: Matrix4.translationValues(
           0,

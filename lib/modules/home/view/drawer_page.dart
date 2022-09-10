@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_boilerplate/common/utils/navigator_util.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
 
 class DrawerPage extends StatelessWidget {
-  const DrawerPage({super.key, required this.modules});
-
-  final List<Module> modules;
+  const DrawerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
