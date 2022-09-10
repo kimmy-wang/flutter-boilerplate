@@ -73,22 +73,13 @@ class _MacosHomeViewState extends State<MacosHomeView> with WindowListener {
               placeholder: 'Search',
               controller: searchFieldController,
               onResultSelected: (result) {
-                switch (result.searchKey) {
-                  case 'Trending':
-                    context.read<HomeCubit>().setTab(0, false);
-                    setState(searchFieldController.clear);
-                    break;
-                  case 'Search':
-                    context.read<HomeCubit>().setTab(1, false);
-                    setState(searchFieldController.clear);
-                    break;
-                  case 'Mine':
-                    context.read<HomeCubit>().setTab(2, false);
-                    setState(searchFieldController.clear);
-                    break;
-                  default:
-                    searchFieldController.clear();
+                final idx = moduleNames.indexOf(result.searchKey);
+                if (idx >= 0) {
+                  context.read<HomeCubit>().setTab(idx, false);
+                  setState(searchFieldController.clear);
+                  return;
                 }
+                searchFieldController.clear();
               },
               results: modules
                   .map((module) => SearchResultItem(module.label))

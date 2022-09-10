@@ -15,6 +15,8 @@ const List<Module> modules = [
   Module(child: MinePage(), label: 'Mine', icon: Icons.settings),
 ];
 
+final List<String> moduleNames = modules.map((module) => module.label).toList();
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

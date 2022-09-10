@@ -75,24 +75,15 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           // ],
           autoSuggestBox: AutoSuggestBox(
             controller: searchFieldController,
-            items: modules.map((module) => module.label).toList(),
+            items: moduleNames,
             onSelected: (value) {
-              switch (value) {
-                case 'Trending':
-                  context.read<HomeCubit>().setTab(0, false);
-                  setState(searchFieldController.clear);
-                  break;
-                case 'Search':
-                  context.read<HomeCubit>().setTab(1, false);
-                  setState(searchFieldController.clear);
-                  break;
-                case 'Mine':
-                  context.read<HomeCubit>().setTab(2, false);
-                  setState(searchFieldController.clear);
-                  break;
-                default:
-                  searchFieldController.clear();
+              final idx = moduleNames.indexOf(value);
+              if (idx >= 0) {
+                context.read<HomeCubit>().setTab(idx, false);
+                setState(searchFieldController.clear);
+                return;
               }
+              searchFieldController.clear();
             },
           ),
           autoSuggestBoxReplacement: const Icon(FluentIcons.search),
