@@ -1,9 +1,9 @@
 import 'package:flutter_boilerplate/common/constants/constants.dart';
 import 'package:http_trending_api/http_trending_api.dart';
 
-class HttpBaseClient extends BaseClient {
-  HttpBaseClient({Client? inner})
-      : _inner = inner ?? Client();
+class TrendingHttpBaseClient extends AbstractBaseClient {
+  TrendingHttpBaseClient(String baseUrl, {Client? inner})
+      : _inner = inner ?? Client(), super(baseUrl);
 
   final Client _inner;
 
@@ -12,5 +12,3 @@ class HttpBaseClient extends BaseClient {
     return _inner.send(request);
   }
 }
-
-var client = HttpBaseClient();

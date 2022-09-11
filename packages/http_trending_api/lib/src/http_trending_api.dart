@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:http_trending_api/src/abstract_base_client.dart';
 import 'package:trending_api/trending_api.dart';
 
 /// {@template http_trending_api}
@@ -10,10 +10,10 @@ import 'package:trending_api/trending_api.dart';
 class HttpTrendingApi extends TrendingApi {
   /// {@macro http_trending_api}
   HttpTrendingApi({
-    required http.Client client,
+    required AbstractBaseClient client,
   }) : _client = client;
 
-  final http.Client _client;
+  final AbstractBaseClient _client;
 
   @override
   Future<List<Trending>?> getTrending({
@@ -21,7 +21,7 @@ class HttpTrendingApi extends TrendingApi {
     required int pageSize,
   }) async {
     try {
-      final res = await _client.get(Uri.parse('https://api.gitterapp.com/'));
+      final res = await _client.get(Uri.parse('${_client.baseUrl}/'));
       if (res.statusCode == 200) {
         return List<Trending>.from(
             (jsonDecode(utf8.decode(res.bodyBytes)) as Iterable).map(
