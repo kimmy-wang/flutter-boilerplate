@@ -6,11 +6,13 @@ import 'package:flutter_boilerplate/l10n/l10n.dart';
 import 'package:flutter_boilerplate/modules/app/app.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
 import 'package:flutter_boilerplate/theme/theme.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class MaterialAppView extends StatelessWidget {
   MaterialAppView({super.key});
 
   final httpErrorBoundary = HttpErrorBoundary.init();
+  final easyLoading = EasyLoading.init();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,8 @@ class MaterialAppView extends StatelessWidget {
         home: const HomePage(),
         builder: (BuildContext context, Widget? child) {
           final newChild = httpErrorBoundary(context, child);
-          return newChild;
+          final newChild2 = easyLoading(context, newChild);
+          return newChild2;
         },
       ),
     );

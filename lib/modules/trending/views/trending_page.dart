@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
 import 'package:flutter_boilerplate/modules/trending/bloc/trending_bloc.dart';
 import 'package:flutter_boilerplate/modules/trending/widgets/widgets.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:trending_repository/trending_repository.dart';
 
@@ -118,6 +119,13 @@ class _TrendingViewState extends State<TrendingView> {
         ),
         BlocListener<TrendingBloc, TrendingState>(
           listener: (BuildContext context, TrendingState state) {
+            if (state.operation == TrendingOperation.none &&
+                state.status == TrendingStatus.loading) {
+              EasyLoading.show();
+            } else {
+              EasyLoading.dismiss();
+            }
+
             if (state.operation == TrendingOperation.refresh) {
               if (state.status == TrendingStatus.success) {
                 _controller.finishRefresh();

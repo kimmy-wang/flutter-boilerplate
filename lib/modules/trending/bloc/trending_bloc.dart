@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:trending_api/trending_api.dart';
 import 'package:trending_repository/trending_repository.dart';
 
 part 'trending_event.dart';
