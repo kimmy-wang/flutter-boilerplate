@@ -123,7 +123,9 @@ class _TrendingViewState extends State<TrendingView> {
                 state.status == TrendingStatus.loading) {
               EasyLoading.show();
             } else {
-              EasyLoading.dismiss();
+              Future.delayed(const Duration(milliseconds: 200), () => {
+                EasyLoading.dismiss()
+              });
             }
 
             if (state.operation == TrendingOperation.refresh) {
