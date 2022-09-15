@@ -7,6 +7,7 @@ import 'package:flutter_boilerplate/bootstrap.dart';
 import 'package:flutter_boilerplate/common/constants/constants.dart';
 import 'package:flutter_boilerplate/common/dio/other_http.dart';
 import 'package:flutter_boilerplate/common/http/clients.dart';
+import 'package:flutter_boilerplate/common/utils/sp_util.dart';
 import 'package:http_trending_api/http_trending_api.dart';
 import 'package:local_storage_trending_repository_middleware/local_storage_trending_repository_middleware.dart';
 import 'package:window_manager/window_manager.dart';
@@ -23,6 +24,7 @@ bool get isDesktop {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SpUtil.getInstance();
 
   final trendingApi = HttpTrendingApi(
     client: TrendingHttpBaseClient(Constants.githubTrendingApiPrefix),

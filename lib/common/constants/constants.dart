@@ -16,4 +16,6 @@ class Constants {
 
   static const Map<String, String> headers = {'Accept': 'application/vnd.github.giant-sentry-fist-preview+json'};
 
+  static const String introKey = '__intro_key__';
+
 }
