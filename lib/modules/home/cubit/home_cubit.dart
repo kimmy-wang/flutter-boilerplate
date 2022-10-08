@@ -8,4 +8,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   void setTab(int tabIndex, bool refresh) =>
       emit(HomeState(tabIndex: tabIndex, refresh: refresh));
+
+  void setDisplayMode(DisplayMode displayMode) =>
+      emit(state.copyWith(displayMode: displayMode));
 }

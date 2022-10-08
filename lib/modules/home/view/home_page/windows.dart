@@ -45,9 +45,17 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           ),
         ),
         pane: NavigationPane(
+          displayMode: state.displayMode == DisplayMode.compact
+              ? PaneDisplayMode.compact
+              : PaneDisplayMode.open,
           menuButton: Center(
             child: IconButton(
-              onPressed: () {  },
+              onPressed: () {
+                final displayMode = state.displayMode == DisplayMode.compact
+                    ? DisplayMode.open
+                    : DisplayMode.compact;
+                BlocProvider.of<HomeCubit>(context).setDisplayMode(displayMode);
+              },
               icon: const Icon(FluentIcons.collapse_menu),
             ),
           ),
