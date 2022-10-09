@@ -87,7 +87,7 @@ class _LanguagesViewState extends State<LanguagesView> {
     return SettingsList(
       sections: [
         SettingsSection(tiles: [
-          SettingsTile.navigation(
+          SettingsTile(
             title: const Text('英文'),
             trailing: Radio<String>(
               value: 'en',
@@ -102,7 +102,7 @@ class _LanguagesViewState extends State<LanguagesView> {
               },
             ),
           ),
-          SettingsTile.navigation(
+          SettingsTile(
             title: const Text('中文'),
             trailing: Radio<String>(
               value: 'zh',

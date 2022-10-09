@@ -19,7 +19,7 @@ class ThemeModePage extends StatelessWidget {
 }
 
 class ThemeModeView extends StatefulWidget {
-  const ThemeModeView({Key? key}) : super(key: key);
+  const ThemeModeView({super.key});
 
   @override
   State<ThemeModeView> createState() => _ThemeModeViewState();
@@ -114,7 +114,7 @@ class _ThemeModeViewState extends State<ThemeModeView> {
         ),
         if (!_auto)
           SettingsSection(title: const Text('手动选择'), tiles: [
-            SettingsTile.navigation(
+            SettingsTile(
               title: const Text('普通模式'),
               trailing: Radio<ThemeMode>(
                 value: ThemeMode.light,
@@ -129,7 +129,7 @@ class _ThemeModeViewState extends State<ThemeModeView> {
                 },
               ),
             ),
-            SettingsTile.navigation(
+            SettingsTile(
               title: const Text('深色模式'),
               trailing: Radio<ThemeMode>(
                 value: ThemeMode.dark,
