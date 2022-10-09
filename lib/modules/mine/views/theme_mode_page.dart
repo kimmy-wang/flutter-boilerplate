@@ -115,7 +115,7 @@ class _ThemeModeViewState extends State<ThemeModeView> {
         if (!_auto)
           SettingsSection(title: const Text('手动选择'), tiles: [
             SettingsTile(
-              title: const Text('普通模式'),
+              title: const Text('白天模式'),
               trailing: Radio<ThemeMode>(
                 value: ThemeMode.light,
                 groupValue: _mode,

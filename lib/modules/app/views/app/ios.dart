@@ -1,5 +1,5 @@
-
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_boilerplate/common/constants/constants.dart';
 import 'package:flutter_boilerplate/common/dio/widget/http_error_boundary.dart';
@@ -25,6 +25,13 @@ class IOSAppView extends StatelessWidget {
         locale: state.locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        theme: state.themeMode == ThemeMode.system
+            ? null
+            : CupertinoThemeData(
+                brightness: state.themeMode == ThemeMode.dark
+                    ? Brightness.dark
+                    : Brightness.light,
+              ),
         navigatorObservers: [
           SentryNavigatorObserver(),
         ],
