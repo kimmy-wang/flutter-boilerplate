@@ -48,6 +48,7 @@ dependencies:
   json_annotation: ^4.6.0
   macos_ui: ^1.7.5
   pretty_dio_logger: ^1.2.0-beta-1
+  sentry_flutter: ^6.11.2
   settings_ui:
     path: dependencies/settings_ui
   synchronized: ^3.0.0+3

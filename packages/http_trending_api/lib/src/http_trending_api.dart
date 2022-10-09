@@ -31,6 +31,8 @@ class HttpTrendingApi extends TrendingApi {
       return [];
     } catch (error, stack) {
       throw TrendingRequestedException();
+    } finally {
+      _client.close();
     }
   }
 }

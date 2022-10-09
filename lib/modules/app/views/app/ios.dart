@@ -10,6 +10,7 @@ import 'package:flutter_boilerplate/modules/app/app.dart';
 import 'package:flutter_boilerplate/modules/home/home.dart';
 import 'package:flutter_boilerplate/modules/intro/intro.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 class IOSAppView extends StatelessWidget {
   IOSAppView({super.key});
@@ -24,6 +25,9 @@ class IOSAppView extends StatelessWidget {
         locale: state.locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        navigatorObservers: [
+          SentryNavigatorObserver(),
+        ],
         home: _home,
         builder: (BuildContext context, Widget? child) {
           final newChild = httpErrorBoundary(context, child);

@@ -5,6 +5,7 @@
 list(APPEND FLUTTER_PLUGIN_LIST
   dynamic_color
   screen_retriever
+  sentry_flutter
   window_manager
 )
 

@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   connectivity_plus_windows
   dynamic_color
   screen_retriever
+  sentry_flutter
   window_manager
 )
 
