@@ -7,9 +7,18 @@ PODS:
   - FlutterMacOS (1.0.0)
   - macos_ui (0.1.0):
     - FlutterMacOS
+  - package_info_plus_macos (0.0.1):
+    - FlutterMacOS
   - ReachabilitySwift (5.0.0)
   - screen_retriever (0.0.1):
     - FlutterMacOS
+  - Sentry (7.27.1):
+    - Sentry/Core (= 7.27.1)
+  - Sentry/Core (7.27.1)
+  - sentry_flutter (0.0.1):
+    - Flutter
+    - FlutterMacOS
+    - Sentry (~> 7.27.0)
   - shared_preferences_macos (0.0.1):
     - FlutterMacOS
   - window_manager (0.2.0):
@@ -20,13 +29,16 @@ DEPENDENCIES:
   - dynamic_color (from `Flutter/ephemeral/.symlinks/plugins/dynamic_color/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - macos_ui (from `Flutter/ephemeral/.symlinks/plugins/macos_ui/macos`)
+  - package_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos`)
   - screen_retriever (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever/macos`)
+  - sentry_flutter (from `Flutter/ephemeral/.symlinks/plugins/sentry_flutter/macos`)
   - shared_preferences_macos (from `Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos`)
   - window_manager (from `Flutter/ephemeral/.symlinks/plugins/window_manager/macos`)
 
 SPEC REPOS:
   trunk:
     - ReachabilitySwift
+    - Sentry
 
 EXTERNAL SOURCES:
   connectivity_plus_macos:
@@ -37,8 +49,12 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
   macos_ui:
     :path: Flutter/ephemeral/.symlinks/plugins/macos_ui/macos
+  package_info_plus_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos
   screen_retriever:
     :path: Flutter/ephemeral/.symlinks/plugins/screen_retriever/macos
+  sentry_flutter:
+    :path: Flutter/ephemeral/.symlinks/plugins/sentry_flutter/macos
   shared_preferences_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/shared_preferences_macos/macos
   window_manager:
@@ -49,8 +65,11 @@ SPEC CHECKSUMS:
   dynamic_color: 394d6a888650f8534e029b27d2f8bc5c64e44008
   FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
   macos_ui: 125c911559d646194386d84c017ad6819122e2db
+  package_info_plus_macos: f010621b07802a241d96d01876d6705f15e77c1c
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   screen_retriever: 59634572a57080243dd1bf715e55b6c54f241a38
+  Sentry: bc644307e2eb6a4c9c55cf117a80b895bb2a25a7
+  sentry_flutter: a8616c994ac18c371aabee21a953cc727c166421
   shared_preferences_macos: a64dc611287ed6cbe28fd1297898db1336975727
   window_manager: 3a1844359a6295ab1e47659b1a777e36773cd6e8
 
