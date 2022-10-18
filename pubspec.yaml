@@ -31,7 +31,7 @@ environment:
 dependencies:
   adaptive_dialog: ^1.8.0
   bloc: ^8.0.3
-  connectivity_plus: ^2.3.9
+  connectivity_plus: ^3.0.0
   cupertino_icons: ^1.0.5
   easy_refresh: ^3.0.4+1
   fluent_ui: ^3.12.0
