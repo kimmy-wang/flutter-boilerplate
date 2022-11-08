@@ -54001,10 +54001,9 @@ case"TextInputClient.performPrivateCommand":n=t.a
 e=n.a(m.i(o,1))
 m=p.b.r
 l=J.at(e)
-k=A.bo(l.i(e,"action"))
-l=n.a(l.i(e,"data"))
+A.bo(l.i(e,"action"))
+n.a(l.i(e,"data"))
 m.a.toString
-null.$2(k,l)
 break
 case"TextInputClient.updateFloatingCursor":n=l.r
 l=A.aOl(A.bo(m.i(o,1)))
