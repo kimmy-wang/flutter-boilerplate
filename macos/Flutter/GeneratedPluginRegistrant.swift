@@ -5,7 +5,7 @@
 import FlutterMacOS
 import Foundation
 
-import connectivity_plus_macos
+import connectivity_plus
 import dynamic_color
 import macos_ui
 import package_info_plus_macos
