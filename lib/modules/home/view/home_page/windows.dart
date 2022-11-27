@@ -70,10 +70,11 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           items: modules
               .map(
                 (module) => PaneItem(
-              icon: Icon(module.icon),
-              title: Text(module.label),
-            ),
-          )
+                  icon: Icon(module.icon),
+                  title: Text(module.label),
+                  body: module.child,
+                ),
+              )
               .toList()
               .cast<NavigationPaneItem>(),
           // items: [
@@ -83,9 +84,16 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
           // ],
           autoSuggestBox: AutoSuggestBox(
             controller: searchFieldController,
-            items: moduleNames,
+            items: modules
+                .map(
+                  (module) => AutoSuggestBoxItem(
+                    value: module.label,
+                    label: module.label,
+                  ),
+                )
+                .toList(),
             onSelected: (value) {
-              final idx = moduleNames.indexOf(value);
+              final idx = moduleNames.indexOf(value.label);
               if (idx >= 0) {
                 context.read<HomeCubit>().setTab(idx, false);
                 setState(searchFieldController.clear);
@@ -95,10 +103,6 @@ class _WindowsHomeViewState extends State<WindowsHomeView> with WindowListener {
             },
           ),
           autoSuggestBoxReplacement: const Icon(FluentIcons.search),
-        ),
-        content: NavigationBody(
-          index: state.tabIndex,
-          children: modules.map((module) => module.child).toList(),
         ),
       ),
     );
