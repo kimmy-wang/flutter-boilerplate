@@ -22,6 +22,7 @@ class IOSAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (BuildContext context, AppState state) => CupertinoApp(
+        navigatorKey: HttpErrorBoundary.navigatorKey,
         locale: state.locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

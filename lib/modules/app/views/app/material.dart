@@ -22,6 +22,7 @@ class MaterialAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (BuildContext context, AppState state) => MaterialApp(
+        navigatorKey: HttpErrorBoundary.navigatorKey,
         theme: FlutterBoilerplateTheme.light,
         darkTheme: FlutterBoilerplateTheme.dark,
         themeMode: state.themeMode,

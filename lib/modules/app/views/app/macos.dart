@@ -23,6 +23,7 @@ class MacosAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (BuildContext context, AppState state) => MacosApp(
+        navigatorKey: HttpErrorBoundary.navigatorKey,
         theme: MacosThemeData.light(),
         darkTheme: MacosThemeData.dark(),
         themeMode: state.themeMode,

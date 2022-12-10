@@ -22,6 +22,7 @@ class WindowsAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AppCubit, AppState>(
       builder: (BuildContext context, AppState state) => FluentApp(
+        navigatorKey: HttpErrorBoundary.navigatorKey,
         themeMode: state.themeMode,
         locale: state.locale,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

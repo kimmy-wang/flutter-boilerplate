@@ -1,4 +1,3 @@
-
 import 'package:flutter_boilerplate/common/dio/event/http_error_event.dart';
 import 'package:flutter_boilerplate/common/dio/widget/http_error_boundary.dart';
 
@@ -12,11 +11,17 @@ class Code {
   ///网络返回数据格式化一次
   static const networkJsonException = -3;
 
+  static const networkUnAuthorized = 401;
+
   static const success = 200;
 
   static const unauthorizedUrls = [];
 
-  static String? errorHandleFunction(int code, String message, bool noTip) {
+  static String? errorHandleFunction(
+    int? code,
+    String? message, {
+    bool noTip = false,
+  }) {
     if (noTip) {
       return message;
     }

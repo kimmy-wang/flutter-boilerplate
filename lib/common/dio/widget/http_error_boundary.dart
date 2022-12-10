@@ -5,22 +5,20 @@ import 'package:flutter_boilerplate/common/dio/event/http_error_event.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class HttpErrorBoundary {
+  factory HttpErrorBoundary() => _instance;
+
+  HttpErrorBoundary._internal();
   Widget? _w;
   ErrorBoundaryOverlayEntry? overlayEntry;
 
   Widget? get w => _w;
   GlobalKey<_NetworkErrorAlertContainerState>? _key;
-
   GlobalKey<_NetworkErrorAlertContainerState>? get key => _key;
-
-  factory HttpErrorBoundary() => _instance;
   static final HttpErrorBoundary _instance = HttpErrorBoundary._internal();
-
-  HttpErrorBoundary._internal();
-
   static HttpErrorBoundary get instance => _instance;
-
   static bool get isShow => _instance.w != null;
+  static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  static final Map<int, bool> _cacheMap = <int, bool>{};
 
   static TransitionBuilder init({
     TransitionBuilder? builder,
@@ -35,27 +33,45 @@ class HttpErrorBoundary {
   }
 
   static Future<void> handleErrorEvent(HttpErrorEvent event) async {
-    switch (event.code) {
-      case Code.networkError:
-      case Code.networkTimeout:
-        _noNetworkHandler();
-        break;
-      default:
-        _errorDefaultHandler(event);
+    if (event.code != null && !_cacheMap.containsKey(event.code)) {
+      _cacheMap[event.code!] = true;
+      switch (event.code) {
+        case Code.networkError:
+          _noNetworkHandler();
+          break;
+        case Code.networkUnAuthorized:
+          _unAuthorizedHandler();
+          break;
+        default:
+          _errorDefaultHandler(event);
+      }
     }
   }
 
-  static _noNetworkHandler() {
+  static void _noNetworkHandler() {
     instance._show(
       title: 'Tips',
       content: 'Network error. Please check your network and restart the app.',
+      onConfirm: () {
+        _cacheMap.remove(Code.networkError);
+      },
+    );
+  }
+
+  static void _unAuthorizedHandler() {
+    instance._show(
+      title: 'Tips',
+      content: 'Code: 401, msg: redirect to login page.',
       onConfirm: () {},
     );
   }
 
-  static _errorDefaultHandler(HttpErrorEvent event) {
+  static void _errorDefaultHandler(HttpErrorEvent event) {
     Fluttertoast.showToast(
-        msg: 'Error Code: ${event.code}\nError Message: ${event.message}');
+      msg: 'Error Code: ${event.code}\nError Message: ${event.message}',
+    )
+        .then((value) => _cacheMap.remove(event.code))
+        .catchError((error) => _cacheMap.remove(event.code));
   }
 
   Future<void> _show({
@@ -81,11 +97,9 @@ class HttpErrorBoundary {
 }
 
 class _ErrorBoundary extends StatefulWidget {
-  final Widget? child;
 
-  const _ErrorBoundary({Key? key, required this.child})
-      : assert(child != null),
-        super(key: key);
+  const _ErrorBoundary({required this.child});
+  final Widget? child;
 
   @override
   State<_ErrorBoundary> createState() => _ErrorBoundaryState();
@@ -123,13 +137,13 @@ class _ErrorBoundaryState extends State<_ErrorBoundary> {
 }
 
 class ErrorBoundaryOverlayEntry extends OverlayEntry {
-  @override
-  // ignore: overridden_fields
-  final WidgetBuilder builder;
 
   ErrorBoundaryOverlayEntry({
     required this.builder,
   }) : super(builder: builder);
+  @override
+  // ignore: overridden_fields
+  final WidgetBuilder builder;
 
   @override
   void markNeedsBuild() {
@@ -164,7 +178,7 @@ class _NetworkErrorAlertContainerState
     extends State<NetworkErrorAlertContainer> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return ColoredBox(
       color: Colors.black.withOpacity(0.8),
       child: Center(
         child: FittedBox(
@@ -176,7 +190,6 @@ class _NetworkErrorAlertContainerState
               borderRadius: BorderRadius.circular(16),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Text(
                   'Tips',
