@@ -60,10 +60,10 @@ dependencies:
     path: packages/dio_trending_api
   http_trending_api:
     path: packages/http_trending_api
-  trending_repository_middleware:
-    path: packages/trending_repository_middleware
-  local_storage_trending_repository_middleware:
-    path: packages/local_storage_trending_repository_middleware
+  repository_middleware:
+    path: packages/repository_middleware
+  local_storage_repository_middleware:
+    path: packages/local_storage_repository_middleware
   trending_repository:
     path: packages/trending_repository
   window_manager: ^0.2.7

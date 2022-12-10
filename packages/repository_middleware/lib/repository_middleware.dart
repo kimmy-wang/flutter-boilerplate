@@ -1,5 +1,5 @@
 /// A repository that handles trending related requests.
-library trending_repository_middleware;
+library repository_middleware;
 
 export 'package:trending_common/trending_common.dart' show Trending, BuiltBy;
-export 'src/trending_repository_middleware.dart';
+export 'src/repository_middleware.dart';

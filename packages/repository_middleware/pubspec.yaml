@@ -1,4 +1,4 @@
-name: trending_repository_middleware
+name: repository_middleware
 description: A repository that handles todo related requests.
 version: 1.0.0+1
 publish_to: none

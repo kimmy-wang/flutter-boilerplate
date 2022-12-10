@@ -476,10 +476,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.5.4"
-  local_storage_trending_repository_middleware:
+  local_storage_repository_middleware:
     dependency: "direct main"
     description:
-      path: "packages/local_storage_trending_repository_middleware"
+      path: "packages/local_storage_repository_middleware"
       relative: true
     source: path
     version: "1.0.0+1"
@@ -721,6 +721,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  repository_middleware:
+    dependency: "direct main"
+    description:
+      path: "packages/repository_middleware"
+      relative: true
+    source: path
+    version: "1.0.0+1"
   rxdart:
     dependency: transitive
     description:
@@ -975,13 +982,6 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/trending_repository"
-      relative: true
-    source: path
-    version: "1.0.0+1"
-  trending_repository_middleware:
-    dependency: "direct main"
-    description:
-      path: "packages/trending_repository_middleware"
       relative: true
     source: path
     version: "1.0.0+1"

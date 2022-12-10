@@ -9,7 +9,7 @@ import 'package:flutter_boilerplate/common/dio/other_http.dart';
 import 'package:flutter_boilerplate/common/http/clients.dart';
 import 'package:flutter_boilerplate/common/utils/sp_util.dart';
 import 'package:http_trending_api/http_trending_api.dart';
-import 'package:local_storage_trending_repository_middleware/local_storage_trending_repository_middleware.dart';
+import 'package:local_storage_repository_middleware/local_storage_repository_middleware.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -33,7 +33,7 @@ Future<void> main() async {
       client: SentryHttpClient(),
     ),
   );
-  final trendingRepositoryMiddleware = LocalStorageTrendingRepositoryMiddleware(
+  final repositoryMiddleware = LocalStorageRepositoryMiddleware(
     plugin: await SharedPreferences.getInstance(),
   );
 
@@ -58,6 +58,6 @@ Future<void> main() async {
 
   bootstrap(
     trendingApi: trendingApi,
-    trendingRepositoryMiddleware: trendingRepositoryMiddleware,
+    repositoryMiddleware: repositoryMiddleware,
   );
 }

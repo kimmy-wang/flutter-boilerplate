@@ -9,8 +9,8 @@ environment:
 dependencies:
   trending_api:
     path: ../trending_api
-  trending_repository_middleware:
-    path: ../trending_repository_middleware
+  repository_middleware:
+    path: ../repository_middleware
 
 dev_dependencies:
   mocktail: ^0.3.0

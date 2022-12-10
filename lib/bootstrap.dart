@@ -5,14 +5,14 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_boilerplate/app/app_bloc_observer.dart';
 import 'package:flutter_boilerplate/modules/app/app.dart';
+import 'package:repository_middleware/repository_middleware.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:trending_api/trending_api.dart';
 import 'package:trending_repository/trending_repository.dart';
-import 'package:trending_repository_middleware/trending_repository_middleware.dart';
 
 void bootstrap({
   required TrendingApi trendingApi,
-  required TrendingRepositoryMiddleware trendingRepositoryMiddleware,
+  required RepositoryMiddleware repositoryMiddleware,
 }) {
   FlutterError.onError = (details) async {
     log(details.exceptionAsString(), stackTrace: details.stack);
@@ -21,7 +21,7 @@ void bootstrap({
 
   final trendingRepository = TrendingRepository(
     trendingApi: trendingApi,
-    trendingRepositoryMiddleware: trendingRepositoryMiddleware,
+    repositoryMiddleware: repositoryMiddleware,
   );
 
   runZonedGuarded(

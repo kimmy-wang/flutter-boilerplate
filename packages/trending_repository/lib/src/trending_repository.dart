@@ -1,5 +1,5 @@
+import 'package:repository_middleware/repository_middleware.dart';
 import 'package:trending_api/trending_api.dart';
-import 'package:trending_repository_middleware/trending_repository_middleware.dart';
 
 /// {@template trending_repository}
 /// A repository that handles trending related requests.
@@ -8,12 +8,12 @@ class TrendingRepository {
   /// {@macro trending_repository}
   const TrendingRepository({
     required TrendingApi trendingApi,
-    TrendingRepositoryMiddleware? trendingRepositoryMiddleware,
+    RepositoryMiddleware? repositoryMiddleware,
   })  : _trendingApi = trendingApi,
-        _trendingRepositoryMiddleware = trendingRepositoryMiddleware;
+        _repositoryMiddleware = repositoryMiddleware;
 
   final TrendingApi _trendingApi;
-  final TrendingRepositoryMiddleware? _trendingRepositoryMiddleware;
+  final RepositoryMiddleware? _repositoryMiddleware;
 
   /// Provides a [Future] of all trending.
   Future<List<Trending>?> getTrending({
@@ -22,11 +22,28 @@ class TrendingRepository {
     int page = 1,
     int pageSize = 25,
   }) async {
-    List<Trending>? trendingList = [];
+    List<Trending>? trendingList;
     final suffix = loadMore ? '${page}_$pageSize' : null;
-    if (_trendingRepositoryMiddleware != null && !pullDown) {
-      trendingList =
-          await _trendingRepositoryMiddleware!.getTrending(suffix: suffix);
+    if (_repositoryMiddleware != null && !pullDown) {
+      List<Trending>? trendingConverter(dynamic jsonStr) {
+        if (jsonStr != null) {
+          return List<Map<String, dynamic>>.from(
+            jsonStr as Iterable,
+          )
+              .map(
+                (jsonMap) => Trending.fromJson(
+                  Map<String, dynamic>.from(jsonMap),
+                ),
+              )
+              .toList();
+        }
+        return null;
+      }
+
+      trendingList = await _repositoryMiddleware!.get<List<Trending>?>(
+        trendingConverter,
+        suffix: suffix,
+      );
     }
     if (trendingList == null || trendingList.isEmpty) {
       trendingList = await _trendingApi.getTrending(
@@ -34,11 +51,10 @@ class TrendingRepository {
         pageSize: pageSize,
       );
     }
-    if (_trendingRepositoryMiddleware != null &&
+    if (_repositoryMiddleware != null &&
         trendingList != null &&
         trendingList.isNotEmpty) {
-      await _trendingRepositoryMiddleware!
-          .saveTrending(trendingList, suffix: suffix);
+      await _repositoryMiddleware!.save(trendingList, suffix: suffix);
     }
     return trendingList;
   }

@@ -1,4 +1,4 @@
-name: local_storage_trending_repository_middleware
+name: local_storage_repository_middleware
 description: A Flutter implementation of the TodosApi that uses local storage.
 version: 1.0.0+1
 publish_to: none
@@ -9,10 +9,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.3.0
+  repository_middleware:
+    path: ../repository_middleware
+  trending_common:
+    path: ../trending_common
   shared_preferences: ^2.0.7
-  trending_repository_middleware:
-    path: ../trending_repository_middleware
 
 dev_dependencies:
   flutter_test:
