@@ -266,7 +266,7 @@ packages:
       name: easy_refresh
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.4+4"
+    version: "3.0.5+1"
   equatable:
     dependency: transitive
     description:
@@ -308,7 +308,7 @@ packages:
       name: fluent_ui
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.0"
+    version: "4.1.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -339,7 +339,7 @@ packages:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.15"
+    version: "2.2.16"
   flutter_spinkit:
     dependency: transitive
     description:
@@ -363,7 +363,7 @@ packages:
       name: fluttertoast
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "8.1.1"
+    version: "8.1.2"
   frontend_server_client:
     dependency: transitive
     description:
@@ -447,7 +447,7 @@ packages:
       name: introduction_screen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.2"
+    version: "3.1.1"
   io:
     dependency: transitive
     description:
@@ -741,7 +741,7 @@ packages:
       name: screen_retriever
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.3"
+    version: "0.1.4"
   scroll_pos:
     dependency: transitive
     description:
@@ -1061,7 +1061,7 @@ packages:
       name: window_manager
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.7"
+    version: "0.2.8"
   xdg_directories:
     dependency: transitive
     description:
