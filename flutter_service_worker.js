@@ -57,8 +57,8 @@ const RESOURCES = {
 "assets/assets/images/android12splash.png": "1b156e18a51eec7a6c707e7f32f323fb",
 "assets/assets/fonts/iconfont.ttf": "61ab849333512158c9d47354c641aeec",
 "assets/NOTICES": "920e3ef366d875c7dd171d0ca794acd0",
-"index.html": "c1b13960baa47b5af2a6f95c6f793159",
-"/": "c1b13960baa47b5af2a6f95c6f793159",
+"index.html": "6a0091024aad9ba395fa1d94920ea143",
+"/": "6a0091024aad9ba395fa1d94920ea143",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "version.json": "404ac7ee9da5da8572940346f863bd6d"
 };
