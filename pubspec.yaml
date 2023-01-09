@@ -66,7 +66,7 @@ dependencies:
     path: packages/local_storage_repository_middleware
   trending_repository:
     path: packages/trending_repository
-  window_manager: ^0.2.8
+  window_manager: ^0.3.0
 
 
 dev_dependencies:
