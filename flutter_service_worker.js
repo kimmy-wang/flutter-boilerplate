@@ -21,7 +21,7 @@ const RESOURCES = {
 "splash/img/light-1x.png": "ab1cbcce80981cd3e51785e663fad95b",
 "splash/splash.js": "123c400b58bea74c1305ca3ac966748d",
 "splash/style.css": "cbfe62a2c7e6af0e29b484d30610f3cf",
-"main.dart.js": "413a4cf00ccb8978d0f7a8a1a598cde9",
+"main.dart.js": "37b08a94444efe4a1f514cfebfbebae1",
 "canvaskit/canvaskit.wasm": "bf50631470eb967688cca13ee181af62",
 "canvaskit/profiling/canvaskit.wasm": "95a45378b69e77af5ed2bc72b2209b94",
 "canvaskit/profiling/canvaskit.js": "38164e5a72bdad0faa4ce740c9b8e564",
@@ -56,9 +56,9 @@ const RESOURCES = {
 "assets/assets/images/dart.png": "735531cda11c098d9eed28ead619ab41",
 "assets/assets/images/android12splash.png": "1b156e18a51eec7a6c707e7f32f323fb",
 "assets/assets/fonts/iconfont.ttf": "61ab849333512158c9d47354c641aeec",
-"assets/NOTICES": "920e3ef366d875c7dd171d0ca794acd0",
-"index.html": "b615ad469db05eb6d4bfb100877a9bd4",
-"/": "b615ad469db05eb6d4bfb100877a9bd4",
+"assets/NOTICES": "74293869c6298cb65c4841b1d79a1bd2",
+"index.html": "3ccaa4e6fed77746070dc41dd9fc7719",
+"/": "3ccaa4e6fed77746070dc41dd9fc7719",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "version.json": "404ac7ee9da5da8572940346f863bd6d"
 };
