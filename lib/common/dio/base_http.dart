@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/native_imp.dart';
+import 'package:dio/dio.dart';
 import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_boilerplate/common/constants/constants.dart';
@@ -17,10 +17,10 @@ Future parseJson(String text) {
   return compute(_parseAndDecode, text);
 }
 
-abstract class BaseHttp extends DioForNative {
+abstract class BaseHttp extends DioMixin {
   BaseHttp({String baseUrl = Constants.githubApiPrefix}) {
     /// 初始化 加入app通用处理
-    (transformer as DefaultTransformer).jsonDecodeCallback = parseJson;
+    (transformer as BackgroundTransformer).jsonDecodeCallback = parseJson;
     interceptors.addAll([
       ErrorInterceptor(),
       BaseInterceptor(baseUrl),

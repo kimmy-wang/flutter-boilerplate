@@ -11,8 +11,8 @@ class BaseInterceptor extends InterceptorsWrapper {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options
       ..baseUrl = baseUrl
-      ..connectTimeout = Constants.timeOut * 1000 //5s
-      ..receiveTimeout = Constants.timeOut * 1000
+      ..connectTimeout = const Duration(seconds: Constants.timeOut) //5s
+      ..receiveTimeout = const Duration(seconds: Constants.timeOut)
       ..headers.addAll(Constants.headers);
     super.onRequest(options, handler);
   }
