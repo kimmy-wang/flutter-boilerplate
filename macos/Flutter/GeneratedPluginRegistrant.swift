@@ -8,7 +8,7 @@ import Foundation
 import connectivity_plus
 import dynamic_color
 import macos_ui
-import package_info_plus_macos
+import package_info_plus
 import screen_retriever
 import sentry_flutter
 import shared_preferences_macos
