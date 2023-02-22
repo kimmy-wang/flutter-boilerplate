@@ -30,29 +30,29 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  adaptive_dialog: ^1.8.0
-  bloc: ^8.0.3
-  connectivity_plus: ^3.0.2
+  adaptive_dialog: ^1.8.2
+  bloc: ^8.1.1
+  connectivity_plus: ^3.0.3
   cupertino_icons: ^1.0.5
-  easy_refresh: ^3.0.5+1
+  easy_refresh: ^3.3.1
   fluent_ui: ^4.3.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.1.2
   flutter_easyloading: ^3.0.5
   flutter_localizations:
     sdk: flutter
-  flutter_native_splash: ^2.2.16
-  fluttertoast: ^8.1.2
+  flutter_native_splash: ^2.2.18
+  fluttertoast: ^8.2.1
   intl: ^0.17.0
-  introduction_screen: ^3.1.1
-  json_annotation: ^4.7.0
+  introduction_screen: ^3.1.6
+  json_annotation: ^4.8.0
   macos_ui: ^1.11.1
   pretty_dio_logger: ^1.3.1
-  sentry_flutter: ^6.11.2
+  sentry_flutter: ^6.20.1
   settings_ui:
     path: dependencies/settings_ui
-  synchronized: ^3.0.0+3
+  synchronized: ^3.0.1
   trending_common:
     path: packages/trending_common
   trending_api:
@@ -71,11 +71,11 @@ dependencies:
 
 
 dev_dependencies:
-  bloc_test: ^9.0.3
-  build_runner: ^2.3.0
+  bloc_test: ^9.1.1
+  build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
-  json_serializable: ^6.5.4
+  json_serializable: ^6.6.1
   mockingjay: ^0.3.0
   mocktail: ^0.3.0
   very_good_analysis: ^4.0.0+1
