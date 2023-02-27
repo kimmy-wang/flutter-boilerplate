@@ -35,7 +35,7 @@ dependencies:
   connectivity_plus: ^3.0.3
   cupertino_icons: ^1.0.5
   easy_refresh: ^3.3.1
-  fluent_ui: ^4.3.0
+  fluent_ui: ^4.4.0
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.2
@@ -67,7 +67,7 @@ dependencies:
     path: packages/local_storage_repository_middleware
   trending_repository:
     path: packages/trending_repository
-  window_manager: ^0.3.0
+  window_manager: ^0.3.1
 
 
 dev_dependencies:

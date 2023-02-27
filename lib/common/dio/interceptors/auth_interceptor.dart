@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter_boilerplate/app/app_manager.dart';
 
 class AuthorizationInterceptor extends InterceptorsWrapper {

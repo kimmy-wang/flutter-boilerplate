@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+import 'package:dio_trending_api/dio_trending_api.dart';
 import 'package:flutter_boilerplate/app/app_manager.dart';
 import 'package:flutter_boilerplate/common/dio/base_http.dart';
 
