@@ -27,12 +27,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SpUtil.getInstance();
 
-  final trendingApi = HttpTrendingApi(
-    client: TrendingHttpBaseClient(
-      Constants.githubTrendingApiPrefix,
-      client: SentryHttpClient(),
-    ),
-  );
+  final trendingApi = DioTrendingApi(dio: trendingHttp);
   final repositoryMiddleware = LocalStorageRepositoryMiddleware(
     plugin: await SharedPreferences.getInstance(),
   );

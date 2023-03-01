@@ -16,19 +16,21 @@ Future parseJson(String text) {
   return compute(_parseAndDecode, text);
 }
 
-abstract class BaseHttp extends DioMixin {
+abstract class BaseHttp with DioMixin implements Dio {
   BaseHttp({String baseUrl = Constants.githubApiPrefix}) {
     /// 初始化 加入app通用处理
     (transformer as BackgroundTransformer).jsonDecodeCallback = parseJson;
+    options = BaseOptions();
+    httpClientAdapter = HttpClientAdapter();
     interceptors.addAll([
       ErrorInterceptor(),
       BaseInterceptor(baseUrl),
       if (!kReleaseMode) ...[
-            PrettyDioLogger(
-              requestHeader: true,
-              requestBody: true,
-            )
-          ],
+        PrettyDioLogger(
+          requestHeader: true,
+          requestBody: true,
+        )
+      ],
     ]);
     init();
   }

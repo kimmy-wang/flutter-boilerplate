@@ -21,12 +21,11 @@ class DioTrendingApi extends TrendingApi {
   }) async {
     try {
       final res = await _dio.get('/');
-      if (res.statusCode == 200) {
-        return List<Trending>.from((res.data as Iterable).map(
+      return List<Trending>.from(
+        (res.data as Iterable).map(
           (x) => Trending.fromJson(x as Map<String, dynamic>),
-        ));
-      }
-      return [];
+        ),
+      );
     } on Exception catch (error, stack) {
       throw TrendingRequestedException();
     }
