@@ -100,7 +100,7 @@ jobs:
       - run: flutter doctor -v
       # Checkout code, recreate missing files, and get packages.
       - name: Checkout code
-        uses: actions/checkout@83b7061638ee4956cf7545a6f7efe594e5ad0247
+        uses: actions/checkout@47fbe2df0ad0e27efb67a70beac3555f192b062f
       - run: flutter pub get
 
       - name: Configure Keystore for Android
