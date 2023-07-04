@@ -78,7 +78,7 @@ dev_dependencies:
   json_serializable: ^6.6.1
   mockingjay: ^0.3.0
   mocktail: ^0.3.0
-  very_good_analysis: ^4.0.0+1
+  very_good_analysis: ^5.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
