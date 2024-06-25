@@ -8,7 +8,7 @@ environment:
   flutter: 3.7.0
 
 dependencies:
-  rxdart: ^0.27.2
+  rxdart: ^0.28.0
   shared_preferences: ^2.0.7
   trending_common:
     path: ../trending_common
